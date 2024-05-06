@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqi25bb7ykmey"]
+
+[ext_resource type="Texture2D" uid="uid://k4oe27sapphj" path="res://Assets/Sprites/Items/End (Idle).png" id="1_diy73"]
+[ext_resource type="Script" path="res://Scenes/Items/Trophy.cs" id="1_f1nbe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nhlu0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_diy73")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phhn7"]
+size = Vector2(34, 44)
+
+[node name="Trophy" type="Area2D"]
+script = ExtResource("1_f1nbe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_nhlu0")
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_phhn7")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
